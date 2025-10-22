@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useReducer } from "react"
+import React, { act, createContext, useContext, useMemo, useReducer } from "react"
 import type { Action, Task, TasksContextValue, TasksState } from "./types";
 
 
@@ -11,13 +11,14 @@ function tasksReducer(state: TasksState, action: Action): TasksState {
             const newTask: Task = {
                 id: Date.now().toString(),
                 text: action.text.trim(),
+                description: action.description.trim(),
                 done: false,
             };
             return { tasks: [newTask, ...state.tasks] }
         }
         case "UPDATE": {
             return {
-                tasks: state.tasks.map((t) => t.id === action.id ? { ...t, text: action.text.trim() } : t)
+                tasks: state.tasks.map((t) => t.id === action.id ? { ...t, text: action.text.trim(), description: action.description.trim() } : t)
             }
         }
         case "TOGGLE": {
@@ -44,8 +45,8 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
     const value = useMemo(
         () => ({
             tasks: state.tasks,
-            add: (text: string) => dispatch({type: "ADD", text}),
-            update: (id: string,text: string) => dispatch({type: "UPDATE", id, text}),
+            add: (text: string, description: string) => dispatch({type: "ADD", text, description}),
+            update: (id: string,text: string, description: string) => dispatch({type: "UPDATE", id, text, description}),
             toggle:(id: string) => dispatch({type: "TOGGLE", id}),
             remove:(id: string) => dispatch({type: "DELETE", id})
         })

@@ -24,7 +24,8 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete }: TaskCardP
   return (
     <View style={styles.card}>
       <TouchableOpacity onPress={onToggle} style={{ flex: 1 }}>
-        <Text style={[styles.text, task.done && styles.done]}>{task.text}</Text>
+        <Text style={[styles.text, task.done && styles.done, {fontSize: 22}]}>{task.text}</Text>
+        <Text style={[styles.text, task.done && styles.done, {fontSize: 12, fontWeight: "light", color:"grey"}] }>{task.description}</Text>
         <Text style={styles.meta}>{task.done ? "✅ Completed" : "⏳ Incomplete"}</Text>
       </TouchableOpacity>
 
