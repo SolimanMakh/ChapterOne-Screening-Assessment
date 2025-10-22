@@ -24,7 +24,7 @@ export default function AddEditTaskScreen({ route, navigation }: Props) {
         const descriptionValue = description.trim();
 
         if (!textValue || !descriptionValue) {
-
+            // Alert.alert on web is limited; the buttons array is ignored, and sometimes nothing shows depending on the bundler. Use a web fallback.
             if (Platform.OS === "web") {
                 window.alert("Please fill in the task and task description properly")
                 return
