@@ -1,4 +1,4 @@
-import React, { act, createContext, useContext, useMemo, useReducer } from "react"
+import React, { createContext, useContext, useMemo, useReducer } from "react"
 import type { Action, Task, TasksContextValue, TasksState } from "./types";
 
 

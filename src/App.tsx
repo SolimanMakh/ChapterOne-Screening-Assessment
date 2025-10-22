@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native';
 import { TasksProvider } from './TaskManager/TasksContext';
 import { NavigationContainer } from "@react-navigation/native";
 import RNavigator from './RNavigator';
