@@ -4,6 +4,7 @@ import type { Action, Task, TasksContextValue, TasksState } from "./types";
 
 const initialState: TasksState = { tasks: [] };
 
+// Reducer Function that handles state based on different actions
 function tasksReducer(state: TasksState, action: Action): TasksState {
     switch (action.type) {
         case "ADD": {
@@ -34,6 +35,9 @@ function tasksReducer(state: TasksState, action: Action): TasksState {
 const TasksContext = createContext<TasksContextValue | null>(null);
 
 
+
+// TasksProvider to handle all the context initialization logic instead of rewriting it in every single component that needs the context
+
 export function TasksProvider({ children }: { children: React.ReactNode }) {
     const [state, dispatch] = useReducer(tasksReducer, initialState)
 
@@ -51,6 +55,8 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
     return (<TasksContext.Provider value={value}>{children}</TasksContext.Provider>);
 }
 
+
+// Checks if value is set, it will be only set if TasksProvider is used
 export function useTasks(){
     const ctx = useContext(TasksContext);
     if(!ctx) throw new Error ("Use this only inside TasksProvider to get the value lol!!!")

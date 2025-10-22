@@ -4,8 +4,10 @@ export const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, backgroundColor: "#fff" },
   card: {
     flexDirection: "row",
+    width:"100%",
     alignItems: "center",
     padding: 12,
+    marginBottom:8,
     backgroundColor: "#f6f6f8",
     borderRadius: 12,
   },

@@ -11,6 +11,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function RNavigator(){
   return(  <Stack.Navigator>
+    {/* Stack of screens for navigation */}
         <Stack.Screen name="List" component={TaskListScreen}></Stack.Screen>
         <Stack.Screen name="AddEdit" component={AddEditTaskScreen}></Stack.Screen>
     </Stack.Navigator>

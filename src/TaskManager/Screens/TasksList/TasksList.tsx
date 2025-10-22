@@ -10,6 +10,7 @@ import TaskCard from "../../components/TaskCard";
 type Props = NativeStackScreenProps<RootStackParamList, "List">;
 
 export default function TaskListScreen({ navigation }: Props) {
+    // Extracting the values from the context object to reach the root state via the context methods
     const { tasks, toggle, remove } = useTasks();
 
     return (

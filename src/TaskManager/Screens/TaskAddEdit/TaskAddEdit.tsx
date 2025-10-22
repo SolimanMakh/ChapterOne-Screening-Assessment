@@ -8,6 +8,9 @@ import { RootStackParamList } from "../../types";
 type Props = NativeStackScreenProps<RootStackParamList, "AddEdit">;
 
 export default function AddEditTaskScreen({ route, navigation }: Props) {
+
+  // Grabbing the id from the route params to find out if it exist, if not then we are creating a new task
+  
   const { id } = route.params || {};
   const { tasks, add, update } = useTasks();
 
